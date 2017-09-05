@@ -17,12 +17,19 @@
      <input type="text" ng-model="newContact.ph_number" placeholder="ph_number" name="" value="">
      <input type="text" ng-model="newContact.address" placeholder="address" name="" value="">
      <input type="text" ng-model="newContact.city" placeholder="city" name="" value="">
+     <button type="button" name="button" ng-click="addContact(newContact)">Submit</button>
    </div>
-   <div ng-repeat="person in people | filter: filter">
+   <select class="" ng-model="sortDirection" name="">
+     <option value="-">Desc</option>
+     <option value="+">Asc</option>
+   </select>
+   <div ng-repeat="person in people | filter: filter | orderBy: sortDirection + 'first_name'  track by $index">
+
      Name: {{ person.first_name }} {{person.last_name}} <br>
      Email: {{ person.email }} <br>
      Phone: {{ person.ph_number }} <br>
      Address: {{ person.address }}  {{ person.city }} <br>
+     <button type="button" ng-click="deleteContact($index)" name="button">Delete Contact</button>
      <hr>
    </div>
 

@@ -1,3 +1,13 @@
+angular.module('app').service('phoneBookService', function() {
+  this.people = people;
+  this.addContact = function(contactObj) {
+    this.people.push(contactObj);
+  };
+  this.deleteContact = function(i) {
+    this.people.splice(i, 1);
+  };
+});
+
 var people = [
   {
     id: 1,
